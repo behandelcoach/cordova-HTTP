@@ -86,7 +86,7 @@
     [self setRequestHeaders: headers forManager: manager];
 
     CordovaHttpPlugin* __weak weakSelf = self;
-    manager.responseSerializer = [TextResponseSerializer serializer];
+    manager.responseSerializer = [TextResponseSerializer serializer: headers];
     [manager POST:url parameters:parameters progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
         [self setResults: dictionary withTask: task];
@@ -115,7 +115,7 @@
    [self setRequestHeaders: headers forManager:manager];
 
    CordovaHttpPlugin* __weak weakSelf = self;
-   manager.responseSerializer = [TextResponseSerializer serializer];
+   manager.responseSerializer = [TextResponseSerializer serializer: headers];
     [manager POST:url parameters:parameters progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
         [self setResults: dictionary withTask: task];
@@ -140,8 +140,7 @@
     [self setRequestHeaders: headers forManager: manager];
 
     CordovaHttpPlugin* __weak weakSelf = self;
-
-    manager.responseSerializer = [TextResponseSerializer serializer];
+    manager.responseSerializer = [TextResponseSerializer serializer: headers];
     [manager GET:url parameters:parameters progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
         [self setResults: dictionary withTask: task];
@@ -199,7 +198,7 @@
     [self setRequestHeaders: headers forManager: manager];
 
     CordovaHttpPlugin* __weak weakSelf = self;
-    manager.responseSerializer = [TextResponseSerializer serializer];
+    manager.responseSerializer = [TextResponseSerializer serializer: headers];
     [manager POST:url parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         NSError *error;
         [formData appendPartWithFileURL:fileURL name:name error:&error];
