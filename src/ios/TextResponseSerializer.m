@@ -23,7 +23,7 @@ static BOOL AFErrorOrUnderlyingErrorHasCodeInDomain(NSError *error, NSInteger co
         return nil;
     }
 
-    self.acceptableContentTypes = [NSSet setWithObjects:@"text/plain", @"text/html", @"text/json", @"application/json", @"text/xml", @"application/xml", @"text/css", nil];
+    self.acceptableContentTypes = [NSSet setWithObjects:@"text/plain", @"text/html", @"text/json", @"application/json", @"text/xml", @"application/xml", @"text/css", @"text/mustache", @"text/markdown", nil];
 
     if ([headers objectForKey:@"Accept"]) {
         NSString *acceptHeader = [headers valueForKeyPath:@"Accept"];
